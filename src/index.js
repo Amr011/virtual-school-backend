@@ -15,8 +15,8 @@ app.use(cors());
 app.use(cookieParser());
 dotenv.config();
 
-const indexRouter = require('./router/index');
-app.use(indexRouter);
+const indexRouter = require('./router/index.routes');
+app.use('/api/v1/', indexRouter);
 
 // Unavailable Request
 app.use((req, res) => {
@@ -31,7 +31,7 @@ db.sequelize.sync().then(() => {
 });
 
 // Server Listenning method
-const port = process.env.PORT || 5100;
+const port = process.env.SERVER_PORT || 5100;
 app.listen(port, async () => {
    try {
       console.log(`Server is running successfully on port ${port} `);

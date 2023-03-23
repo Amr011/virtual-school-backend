@@ -122,5 +122,20 @@ class user {
          });
       }
    };
+
+   // User Profile Data
+   static userProfile = async (req, res) => {
+      try {
+         const userId = req.params.id;
+         return res.status(200).json(`Here Is User Profile Data ${userId}`);
+      } catch (err) {
+         console.log(err);
+         return res.status(400).json({
+            message: 'Unexpected Error',
+            status: 400,
+            error: err,
+         });
+      }
+   };
 }
 module.exports = user;

@@ -5,13 +5,16 @@ const userController = require('../controller/user');
 
 const { validateToken } = require('../middleware/auth');
 
+// User Profile
+router.route('/').get(userController.userProfile);
+
 // User Register
-router.route('/api/v1/register').post(userController.userRegister);
+router.route('/register').post(userController.userRegister);
 
 // User Loggin
-router.route('/api/v1/login').post(userController.userLogin);
+router.route('/login').post(userController.userLogin);
 
 // User Logout
-router.route('/api/v1/logout').post(validateToken, userController.userLogout);
+router.route('/logout').post(validateToken, userController.userLogout);
 
 module.exports = router;
